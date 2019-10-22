@@ -1,0 +1,179 @@
+#gameBoard {
+    position: relative;
+    width: 640px;
+    height: 640px;
+    top: 0px;
+    left: 300px;
+    background-size: 640px 640px;
+}
+
+#overlayDiv {
+    background-size: 640px 640px;
+    background: url(img/bgboard.png);
+}
+
+
+#pegsDiv, #overlayDiv {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.peg {
+    position: absolute;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    background-size: 40px;
+}
+
+#overlayDiv div {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-size: 40px 40px;
+    background-image: url("img/hl.png");
+}
+
+.camp {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.active {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+#timeIntervalInput {
+    width: 40px;
+}
+
+
+.col_0 {
+    left: 0px;
+}
+
+.col_1 {
+    left: 40px;
+}
+
+.col_2 {
+    left: 80px;
+}
+
+.col_3 {
+    left: 120px;
+}
+
+.col_4 {
+    left: 160px;
+}
+
+.col_5 {
+    left: 200px;
+}
+
+.col_6 {
+    left: 240px;
+}
+
+.col_7 {
+    left: 280px;
+}
+
+.col_8 {
+    left: 320px;
+}
+
+.col_9 {
+    left: 360px;
+}
+
+.col_10 {
+    left: 400px;
+}
+
+.col_11 {
+    left: 440px;
+}
+
+.col_12 {
+    left: 480px;
+}
+
+.col_13 {
+    left: 520px;
+}
+
+.col_14 {
+    left: 560px;
+}
+
+.col_15 {
+    left: 600px;
+}
+
+.row_0 {
+    top: 0px;
+}
+
+.row_1 {
+    top: 40px;
+}
+
+.row_2 {
+    top: 80px;
+}
+
+.row_3 {
+    top: 120px;
+}
+
+.row_4 {
+    top: 160px;
+}
+
+.row_5 {
+    top: 200px;
+}
+
+.row_6 {
+    top: 240px;
+}
+
+.row_7 {
+    top: 280px;
+}
+
+.row_8 {
+    top: 320px;
+}
+
+.row_9 {
+    top: 360px;
+}
+
+.row_10 {
+    top: 400px;
+}
+
+.row_11 {
+    top: 440px;
+}
+
+.row_12 {
+    top: 480px;
+}
+
+.row_13 {
+    top: 520px;
+}
+
+.row_14 {
+    top: 560px;
+}
+
+.row_15 {
+    top: 600px;
+}

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Halma Replay</title>
+    <script src="jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="replay.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="replay.css">
+</head>
+<body>
+
+<input id="fileInput" type="file">
+<div>Time Interval: <input id="timeIntervalInput" type="text" placeholder="50"> ms</div>
+<button id="replayBtn">Replay</button>
+<div>Turn <span id="turnInfo">0</span> - <span id="playerInfo">NONE</span></div>
+
+<div id="gameBoard">
+    <div id="pegsDiv">
+    </div>
+    <div id="overlayDiv">
+        <!-- Column 0 -->
+        <div class="camp col_0 row_0" id="tile_0_0"></div>
+        <div class="camp col_0 row_1" id="tile_0_1"></div>
+        <div class="camp col_0 row_2" id="tile_0_2"></div>
+        <div class="camp col_0 row_3" id="tile_0_3"></div>
+        <div class="camp col_0 row_4" id="tile_0_4"></div>
+        <div class="col_0 row_5" id="tile_0_5"></div>
+        <div class="col_0 row_6" id="tile_0_6"></div>
+        <div class="col_0 row_7" id="tile_0_7"></div>
+        <div class="col_0 row_8" id="tile_0_8"></div>
+        <div class="col_0 row_9" id="tile_0_9"></div>
+        <div class="col_0 row_10" id="tile_0_10"></div>
+        <div class="col_0 row_11" id="tile_0_11"></div>
+        <div class="col_0 row_12" id="tile_0_12"></div>
+        <div class="col_0 row_13" id="tile_0_13"></div>
+        <div class="col_0 row_14" id="tile_0_14"></div>
+        <div class="col_0 row_15" id="tile_0_15"></div>
+
+        <!-- Column 1 -->
+        <div class="camp col_1 row_0" id="tile_1_0"></div>
+        <div class="camp col_1 row_1" id="tile_1_1"></div>
+        <div class="camp col_1 row_2" id="tile_1_2"></div>
+        <div class="camp col_1 row_3" id="tile_1_3"></div>
+        <div class="camp col_1 row_4" id="tile_1_4"></div>
+        <div class="col_1 row_5" id="tile_1_5"></div>
+        <div class="col_1 row_6" id="tile_1_6"></div>
+        <div class="col_1 row_7" id="tile_1_7"></div>
+        <div class="col_1 row_8" id="tile_1_8"></div>
+        <div class="col_1 row_9" id="tile_1_9"></div>
+        <div class="col_1 row_10" id="tile_1_10"></div>
+        <div class="col_1 row_11" id="tile_1_11"></div>
+        <div class="col_1 row_12" id="tile_1_12"></div>
+        <div class="col_1 row_13" id="tile_1_13"></div>
+        <div class="col_1 row_14" id="tile_1_14"></div>
+        <div class="col_1 row_15" id="tile_1_15"></div>
+
+        <!-- Column 2 -->
+        <div class="camp col_2 row_0" id="tile_2_0"></div>
+        <div class="camp col_2 row_1" id="tile_2_1"></div>
+        <div class="camp col_2 row_2" id="tile_2_2"></div>
+        <div class="camp col_2 row_3" id="tile_2_3"></div>
+        <div class="col_2 row_4" id="tile_2_4"></div>
+        <div class="col_2 row_5" id="tile_2_5"></div>
+        <div class="col_2 row_6" id="tile_2_6"></div>
+        <div class="col_2 row_7" id="tile_2_7"></div>
+        <div class="col_2 row_8" id="tile_2_8"></div>
+        <div class="col_2 row_9" id="tile_2_9"></div>
+        <div class="col_2 row_10" id="tile_2_10"></div>
+        <div class="col_2 row_11" id="tile_2_11"></div>
+        <div class="col_2 row_12" id="tile_2_12"></div>
+        <div class="col_2 row_13" id="tile_2_13"></div>
+        <div class="col_2 row_14" id="tile_2_14"></div>
+        <div class="col_2 row_15" id="tile_2_15"></div>
+
+        <!-- Column 3 -->
+        <div class="camp col_3 row_0" id="tile_3_0"></div>
+        <div class="camp col_3 row_1" id="tile_3_1"></div>
+        <div class="camp col_3 row_2" id="tile_3_2"></div>
+        <div class="col_3 row_3" id="tile_3_3"></div>
+        <div class="col_3 row_4" id="tile_3_4"></div>
+        <div class="col_3 row_5" id="tile_3_5"></div>
+        <div class="col_3 row_6" id="tile_3_6"></div>
+        <div class="col_3 row_7" id="tile_3_7"></div>
+        <div class="col_3 row_8" id="tile_3_8"></div>
+        <div class="col_3 row_9" id="tile_3_9"></div>
+        <div class="col_3 row_10" id="tile_3_10"></div>
+        <div class="col_3 row_11" id="tile_3_11"></div>
+        <div class="col_3 row_12" id="tile_3_12"></div>
+        <div class="col_3 row_13" id="tile_3_13"></div>
+        <div class="col_3 row_14" id="tile_3_14"></div>
+        <div class="col_3 row_15" id="tile_3_15"></div>
+
+        <!-- Column 4 -->
+        <div class="camp col_4 row_0" id="tile_4_0"></div>
+        <div class="camp col_4 row_1" id="tile_4_1"></div>
+        <div class="col_4 row_2" id="tile_4_2"></div>
+        <div class="col_4 row_3" id="tile_4_3"></div>
+        <div class="col_4 row_4" id="tile_4_4"></div>
+        <div class="col_4 row_5" id="tile_4_5"></div>
+        <div class="col_4 row_6" id="tile_4_6"></div>
+        <div class="col_4 row_7" id="tile_4_7"></div>
+        <div class="col_4 row_8" id="tile_4_8"></div>
+        <div class="col_4 row_9" id="tile_4_9"></div>
+        <div class="col_4 row_10" id="tile_4_10"></div>
+        <div class="col_4 row_11" id="tile_4_11"></div>
+        <div class="col_4 row_12" id="tile_4_12"></div>
+        <div class="col_4 row_13" id="tile_4_13"></div>
+        <div class="col_4 row_14" id="tile_4_14"></div>
+        <div class="col_4 row_15" id="tile_4_15"></div>
+
+        <!-- Column 5 -->
+        <div class="col_5 row_0" id="tile_5_0"></div>
+        <div class="col_5 row_1" id="tile_5_1"></div>
+        <div class="col_5 row_2" id="tile_5_2"></div>
+        <div class="col_5 row_3" id="tile_5_3"></div>
+        <div class="col_5 row_4" id="tile_5_4"></div>
+        <div class="col_5 row_5" id="tile_5_5"></div>
+        <div class="col_5 row_6" id="tile_5_6"></div>
+        <div class="col_5 row_7" id="tile_5_7"></div>
+        <div class="col_5 row_8" id="tile_5_8"></div>
+        <div class="col_5 row_9" id="tile_5_9"></div>
+        <div class="col_5 row_10" id="tile_5_10"></div>
+        <div class="col_5 row_11" id="tile_5_11"></div>
+        <div class="col_5 row_12" id="tile_5_12"></div>
+        <div class="col_5 row_13" id="tile_5_13"></div>
+        <div class="col_5 row_14" id="tile_5_14"></div>
+        <div class="col_5 row_15" id="tile_5_15"></div>
+
+        <!-- Column 6 -->
+        <div class="col_6 row_0" id="tile_6_0"></div>
+        <div class="col_6 row_1" id="tile_6_1"></div>
+        <div class="col_6 row_2" id="tile_6_2"></div>
+        <div class="col_6 row_3" id="tile_6_3"></div>
+        <div class="col_6 row_4" id="tile_6_4"></div>
+        <div class="col_6 row_5" id="tile_6_5"></div>
+        <div class="col_6 row_6" id="tile_6_6"></div>
+        <div class="col_6 row_7" id="tile_6_7"></div>
+        <div class="col_6 row_8" id="tile_6_8"></div>
+        <div class="col_6 row_9" id="tile_6_9"></div>
+        <div class="col_6 row_10" id="tile_6_10"></div>
+        <div class="col_6 row_11" id="tile_6_11"></div>
+        <div class="col_6 row_12" id="tile_6_12"></div>
+        <div class="col_6 row_13" id="tile_6_13"></div>
+        <div class="col_6 row_14" id="tile_6_14"></div>
+        <div class="col_6 row_15" id="tile_6_15"></div>
+
+        <!-- Column 7 -->
+        <div class="col_7 row_0" id="tile_7_0"></div>
+        <div class="col_7 row_1" id="tile_7_1"></div>
+        <div class="col_7 row_2" id="tile_7_2"></div>
+        <div class="col_7 row_3" id="tile_7_3"></div>
+        <div class="col_7 row_4" id="tile_7_4"></div>
+        <div class="col_7 row_5" id="tile_7_5"></div>
+        <div class="col_7 row_6" id="tile_7_6"></div>
+        <div class="col_7 row_7" id="tile_7_7"></div>
+        <div class="col_7 row_8" id="tile_7_8"></div>
+        <div class="col_7 row_9" id="tile_7_9"></div>
+        <div class="col_7 row_10" id="tile_7_10"></div>
+        <div class="col_7 row_11" id="tile_7_11"></div>
+        <div class="col_7 row_12" id="tile_7_12"></div>
+        <div class="col_7 row_13" id="tile_7_13"></div>
+        <div class="col_7 row_14" id="tile_7_14"></div>
+        <div class="col_7 row_15" id="tile_7_15"></div>
+
+        <!-- Column 8 -->
+        <div class="col_8 row_0" id="tile_8_0"></div>
+        <div class="col_8 row_1" id="tile_8_1"></div>
+        <div class="col_8 row_2" id="tile_8_2"></div>
+        <div class="col_8 row_3" id="tile_8_3"></div>
+        <div class="col_8 row_4" id="tile_8_4"></div>
+        <div class="col_8 row_5" id="tile_8_5"></div>
+        <div class="col_8 row_6" id="tile_8_6"></div>
+        <div class="col_8 row_7" id="tile_8_7"></div>
+        <div class="col_8 row_8" id="tile_8_8"></div>
+        <div class="col_8 row_9" id="tile_8_9"></div>
+        <div class="col_8 row_10" id="tile_8_10"></div>
+        <div class="col_8 row_11" id="tile_8_11"></div>
+        <div class="col_8 row_12" id="tile_8_12"></div>
+        <div class="col_8 row_13" id="tile_8_13"></div>
+        <div class="col_8 row_14" id="tile_8_14"></div>
+        <div class="col_8 row_15" id="tile_8_15"></div>
+
+        <!-- Column 9 -->
+        <div class="col_9 row_0" id="tile_9_0"></div>
+        <div class="col_9 row_1" id="tile_9_1"></div>
+        <div class="col_9 row_2" id="tile_9_2"></div>
+        <div class="col_9 row_3" id="tile_9_3"></div>
+        <div class="col_9 row_4" id="tile_9_4"></div>
+        <div class="col_9 row_5" id="tile_9_5"></div>
+        <div class="col_9 row_6" id="tile_9_6"></div>
+        <div class="col_9 row_7" id="tile_9_7"></div>
+        <div class="col_9 row_8" id="tile_9_8"></div>
+        <div class="col_9 row_9" id="tile_9_9"></div>
+        <div class="col_9 row_10" id="tile_9_10"></div>
+        <div class="col_9 row_11" id="tile_9_11"></div>
+        <div class="col_9 row_12" id="tile_9_12"></div>
+        <div class="col_9 row_13" id="tile_9_13"></div>
+        <div class="col_9 row_14" id="tile_9_14"></div>
+        <div class="col_9 row_15" id="tile_9_15"></div>
+
+        <!-- Column 10 -->
+        <div class="col_10 row_0" id="tile_10_0"></div>
+        <div class="col_10 row_1" id="tile_10_1"></div>
+        <div class="col_10 row_2" id="tile_10_2"></div>
+        <div class="col_10 row_3" id="tile_10_3"></div>
+        <div class="col_10 row_4" id="tile_10_4"></div>
+        <div class="col_10 row_5" id="tile_10_5"></div>
+        <div class="col_10 row_6" id="tile_10_6"></div>
+        <div class="col_10 row_7" id="tile_10_7"></div>
+        <div class="col_10 row_8" id="tile_10_8"></div>
+        <div class="col_10 row_9" id="tile_10_9"></div>
+        <div class="col_10 row_10" id="tile_10_10"></div>
+        <div class="col_10 row_11" id="tile_10_11"></div>
+        <div class="col_10 row_12" id="tile_10_12"></div>
+        <div class="col_10 row_13" id="tile_10_13"></div>
+        <div class="col_10 row_14" id="tile_10_14"></div>
+        <div class="col_10 row_15" id="tile_10_15"></div>
+
+        <!-- Column 11 -->
+        <div class="col_11 row_0" id="tile_11_0"></div>
+        <div class="col_11 row_1" id="tile_11_1"></div>
+        <div class="col_11 row_2" id="tile_11_2"></div>
+        <div class="col_11 row_3" id="tile_11_3"></div>
+        <div class="col_11 row_4" id="tile_11_4"></div>
+        <div class="col_11 row_5" id="tile_11_5"></div>
+        <div class="col_11 row_6" id="tile_11_6"></div>
+        <div class="col_11 row_7" id="tile_11_7"></div>
+        <div class="col_11 row_8" id="tile_11_8"></div>
+        <div class="col_11 row_9" id="tile_11_9"></div>
+        <div class="col_11 row_10" id="tile_11_10"></div>
+        <div class="col_11 row_11" id="tile_11_11"></div>
+        <div class="col_11 row_12" id="tile_11_12"></div>
+        <div class="col_11 row_13" id="tile_11_13"></div>
+        <div class="camp col_11 row_14" id="tile_11_14"></div>
+        <div class="camp col_11 row_15" id="tile_11_15"></div>
+
+        <!-- Column 12 -->
+        <div class="col_12 row_0" id="tile_12_0"></div>
+        <div class="col_12 row_1" id="tile_12_1"></div>
+        <div class="col_12 row_2" id="tile_12_2"></div>
+        <div class="col_12 row_3" id="tile_12_3"></div>
+        <div class="col_12 row_4" id="tile_12_4"></div>
+        <div class="col_12 row_5" id="tile_12_5"></div>
+        <div class="col_12 row_6" id="tile_12_6"></div>
+        <div class="col_12 row_7" id="tile_12_7"></div>
+        <div class="col_12 row_8" id="tile_12_8"></div>
+        <div class="col_12 row_9" id="tile_12_9"></div>
+        <div class="col_12 row_10" id="tile_12_10"></div>
+        <div class="col_12 row_11" id="tile_12_11"></div>
+        <div class="col_12 row_12" id="tile_12_12"></div>
+        <div class="camp col_12 row_13" id="tile_12_13"></div>
+        <div class="camp col_12 row_14" id="tile_12_14"></div>
+        <div class="camp col_12 row_15" id="tile_12_15"></div>
+
+        <!-- Column 13 -->
+        <div class="col_13 row_0" id="tile_13_0"></div>
+        <div class="col_13 row_1" id="tile_13_1"></div>
+        <div class="col_13 row_2" id="tile_13_2"></div>
+        <div class="col_13 row_3" id="tile_13_3"></div>
+        <div class="col_13 row_4" id="tile_13_4"></div>
+        <div class="col_13 row_5" id="tile_13_5"></div>
+        <div class="col_13 row_6" id="tile_13_6"></div>
+        <div class="col_13 row_7" id="tile_13_7"></div>
+        <div class="col_13 row_8" id="tile_13_8"></div>
+        <div class="col_13 row_9" id="tile_13_9"></div>
+        <div class="col_13 row_10" id="tile_13_10"></div>
+        <div class="col_13 row_11" id="tile_13_11"></div>
+        <div class="camp col_13 row_12" id="tile_13_12"></div>
+        <div class="camp col_13 row_13" id="tile_13_13"></div>
+        <div class="camp col_13 row_14" id="tile_13_14"></div>
+        <div class="camp col_13 row_15" id="tile_13_15"></div>
+
+        <!-- Column 14 -->
+        <div class="col_14 row_0" id="tile_14_0"></div>
+        <div class="col_14 row_1" id="tile_14_1"></div>
+        <div class="col_14 row_2" id="tile_14_2"></div>
+        <div class="col_14 row_3" id="tile_14_3"></div>
+        <div class="col_14 row_4" id="tile_14_4"></div>
+        <div class="col_14 row_5" id="tile_14_5"></div>
+        <div class="col_14 row_6" id="tile_14_6"></div>
+        <div class="col_14 row_7" id="tile_14_7"></div>
+        <div class="col_14 row_8" id="tile_14_8"></div>
+        <div class="col_14 row_9" id="tile_14_9"></div>
+        <div class="col_14 row_10" id="tile_14_10"></div>
+        <div class="camp col_14 row_11" id="tile_14_11"></div>
+        <div class="camp col_14 row_12" id="tile_14_12"></div>
+        <div class="camp col_14 row_13" id="tile_14_13"></div>
+        <div class="camp col_14 row_14" id="tile_14_14"></div>
+        <div class="camp col_14 row_15" id="tile_14_15"></div>
+
+        <!-- Column 15 -->
+        <div class="col_15 row_0" id="tile_15_0"></div>
+        <div class="col_15 row_1" id="tile_15_1"></div>
+        <div class="col_15 row_2" id="tile_15_2"></div>
+        <div class="col_15 row_3" id="tile_15_3"></div>
+        <div class="col_15 row_4" id="tile_15_4"></div>
+        <div class="col_15 row_5" id="tile_15_5"></div>
+        <div class="col_15 row_6" id="tile_15_6"></div>
+        <div class="col_15 row_7" id="tile_15_7"></div>
+        <div class="col_15 row_8" id="tile_15_8"></div>
+        <div class="col_15 row_9" id="tile_15_9"></div>
+        <div class="col_15 row_10" id="tile_15_10"></div>
+        <div class="camp col_15 row_11" id="tile_15_11"></div>
+        <div class="camp col_15 row_12" id="tile_15_12"></div>
+        <div class="camp col_15 row_13" id="tile_15_13"></div>
+        <div class="camp col_15 row_14" id="tile_15_14"></div>
+        <div class="camp col_15 row_15" id="tile_15_15"></div>
+    </div>
+    <script>
+        initPage();
+    </script>
+</div>
+
+
+</body>
+</html>
